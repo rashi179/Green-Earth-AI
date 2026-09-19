@@ -1,0 +1,186 @@
+<!DOCTYPE html >
+<html lang ="en">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name ="viewport"
+      content = "width=device-width,initial-scale=1.0">
+    <title> Green Earth AI</title>
+    <style>
+      *{
+        box-sizing: boarder-box;
+        margin: 0;
+        padding: 0;
+        font-family:arial, sans-serif;
+      }
+      body{
+        background: #f1f8f4;
+        color: #173b2b;
+      }
+      header{
+        background : #1b7f4b;
+        color: white;
+        padding: 25px;
+        text-align = center;
+      }
+      header h1{
+        font-size: 36px;
+        margin-bottom: 8px;
+      }
+      header p{
+        font-size: 17px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding:20px;
+      }
+      .hero{
+        background: white ;
+        padding: 35px;
+        border-radius:18px;
+        text-align : center;
+        margin-bottom : 25px;
+        box-shadow: 0  4px 15px
+        rgba(0,0,0,0.08);
+      }
+      .hero h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+      .hero p{
+        color: #557064;
+        margin-bottom: 20px;
+      }
+      .score {
+        font-size: 40px;
+        font-weight: bold;
+        color: # 1b7f4b;
+      }
+      .cards{
+        display: grid;
+        grid-template-columns:
+          repeat(auto-fit,minmax(230px, 1fr));
+        gap: 20px;
+      }
+      .card{
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px
+        rgba(0,0,0,0.08);
+      }
+      .card h3{
+        margin-bottom :12px;
+        font-size:21px;
+      }
+      .card p {
+        color: #65766d;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+      input, button {
+        width: 100%;
+        padding : 12px;
+        margin-top: 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: # 1b7f4b;
+        color: white;
+          border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+              button:hover {
+                background: #146239;
+              }
+      .result {
+        margin-top: 12px;
+        font-weight : bold;
+      }
+      footer {
+        text-align : center;
+        padding: 25px;
+         color: #60756a;
+      }
+    </style>
+  </head>
+
+  <body> 
+    <header>  
+    <h1> Green Earth AI </h1>
+      <p> AI-powered platform for a greener and more sustainable future</p>
+    </header>
+    <div class= "container">
+      <section class =" hero">
+        <h2> Make Every Action Count   </h2>
+        <p> Track your environmental impact and discover simple ways to live greener.</p>
+        <div class ="Score" >83</div> 
+        <p> Your Green Score</p>
+      </section>
+      <section class="cards">
+        <div class = "card">
+          <h3>  Waste Scanner</h3>
+          <p>Identify the waste and learned how to disposed of it correctly .</p>
+          <input type="file" id="wasteImage"
+            accept = "image/*">
+          <button onclick=" scanWaste()" >Scan Waste</button>
+          <div class = "result" 
+            id = "WasteResult"> </div>
+        </div>
+        <div class="card">
+          <h3> Carbon Footprint </h3>
+          <p> Enter your daily travel distance</p>
+          <input type = "number" id = "distance" 
+            placeholder = "Distance in km">
+          <button
+            onclick = "calculateCarbon()" > Calculate</button>
+          <div class="result"
+            id="CarbonResult"> </div>
+        </div>
+        <div class  = "card">
+        <h3> Green AI Assistant </h3>
+          <p> Get a simple sustainability suggestion .</p>
+          < button onclick ="greenTip()">   Get Green Tip</button>
+          <div class="result" id ="tipResult" ></div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      function scanWaste(){
+      const image = document.getElementById("wasteImage").files[0];
+      if (!image) {
+      document. getElementById("WasteResult").inner Text = 
+      " Please upload a image of waste first.";
+      return ;
+      }
+      document.getElementById("WasteResult").inner
+      Text = 
+      " Demo result : This appears to be recyclable waste ,put it in the recycling bin.";
+      }
+      function calculateCarbon(){
+      const distance = Number(document.getElementById("distance").value);
+      if (!distance){
+      document.getElementByResult("CarbonResult").innerText =
+      "Please enter your distance.";
+      return ;
+      }
+      const carbon =(distance* 0.12).toFixed(2);
+      document.getElementById("carbonResult").innerText = 
+      "Estimated travel footprint: " + carbon + "kgco2e";
+      }
+      function greenTip(){
+      const tips =[
+      " save water while you wash your clothes , brush your teeth. ",
+      "Always prefer Walk and Cycle for short distances",
+      " Separate waste in three container",
+      " Switch off lights when not needed",
+      "Plant and protect trees future lies on saving the trees."
+      ];
+      const randomTip = tips[Math.floor(Math.random()* tips.length)];
+      document.getElementById("tipResult").innerText = randomTip;
+      }
+    </script> 
+  </body>
+</html> 
